@@ -46,7 +46,7 @@ class CSharpHighlighter(QSyntaxHighlighter):
         'byte',     'case',	    'catch',	'false',	'finally',
         'fixed',	'float',	'for',	    'foreach',  'static',
         'goto',	    'if',	    'implicit',	'in',	    'int',
-        'interface','internal',	'do',	'   double',	'else',
+        'interface','internal',	'do',	    'double',	'else',
         'namespace','new',	    'null',	    'object',	'operator',
         'out',	    'override',	'params',	'private',	'protected',
         'public',	'readonly',	'sealed',	'short',	'sizeof',
@@ -77,7 +77,7 @@ class CSharpHighlighter(QSyntaxHighlighter):
         '\^', '\|', '\&', '\~', '>>', '<<',
     ]
 
-    # Python braces
+    # braces
     braces = [
         '\{', '\}', '\(', '\)', '\[', '\]',
     ]
@@ -108,8 +108,9 @@ class CSharpHighlighter(QSyntaxHighlighter):
             # Single-quoted string, possibly containing escape sequences
             (r"'[^'\\]*(\\.[^'\\]*)*'", 0, STYLES['string']),
 
-            # From '#' until a newline
-            (r'#[^\n]*', 0, STYLES['comment']),
+            # comments // & /**/
+            (r'//[^\n]*', 0, STYLES['comment']),
+            (r'/\*[\s\S]*\*/$', 0, STYLES['comment']),
 
             # Numeric literals
             (r'\b[+-]?[0-9]+[lL]?\b', 0, STYLES['numbers']),

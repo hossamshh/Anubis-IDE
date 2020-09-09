@@ -71,7 +71,7 @@ class Signal(QObject):
 # Making text editor as A global variable (to solve the issue of being local to (self) in widget class)
 text = QTextEdit
 text2 = QTextEdit
-language = "python"
+language = "Python"
 
 #
 #
@@ -382,7 +382,7 @@ class UI(QMainWindow):
 
     def fast_execute(self):
         if language == "Python":
-            main_func = FastExecuter.fast_execute(text.toPlainText())
+            main_func = FastExecuter.FastExecuter.fast_execute(text.toPlainText())
             text.setText(main_func)
         else:
             text2.append("Fast Executor option is only available with Python")

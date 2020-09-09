@@ -1,2 +1,2 @@
-def main():
+def hossam():
     print("hello world")
